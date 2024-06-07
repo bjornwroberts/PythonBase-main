@@ -19,6 +19,7 @@ import timeit
 #python3 -m pip install --upgrade Pillow
 global UDP_IP
 ping = 0
+percivedTime = 0
 UDP_IP = 0
 def getMyIP():
     try:

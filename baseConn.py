@@ -12,11 +12,13 @@ import customtkinter
 import tkinter
 import tkinter.messagebox
 from PIL import Image
+import timeit
 #pip3 install "requests>=2.*"
 #pip3 install netifaces
 #python3 -m pip install customtkinter
 #python3 -m pip install --upgrade Pillow
 global UDP_IP
+ping = 0
 UDP_IP = 0
 def getMyIP():
     try:
@@ -301,7 +303,7 @@ def manualControl():
         
         #print(selDrone.ipAddress)Fa
         if (manualyes == True):
-            sendMessage(selDrone.ipAddress, selDrone.port, "MAN" + "|" + ip + "|" + str(yaw) + "|" + str(pitch) + "|" + str(roll) + "|" + str(throttle) + "|" + str(killswitch) + "|")
+            sendMessage(selDrone.ipAddress, selDrone.port, "MAN" + "|" + ip + "|" + str(yaw) + "|" + str(pitch) + "|" + str(roll) + "|" + str(throttle) + "|" + str(killswitch) + "|" + str(timeit.default_timer()) + "|")
         #sendMessage(selDrone.ipAddress, selDrone.port, yaw + str(i))
         
         time.sleep(0.01)
@@ -368,8 +370,8 @@ def kill():
     print("======================================KILL SWITCH ACTIVATED=======================================")
     print("======================================KILL SWITCH ACTIVATED=======================================")
     app.sidebar_button_1.configure(fg_color="Black", text="=KILLED=")
-    app.radio_button_1.configure(fg_color="Red", text="Drone Killed", text_color="Red")
-    app.radio_button_2.configure(fg_color="Red", text="Drone Killed", text_color="Red")
+    app.radio_button_1.configure(fg_color="Red", text="Swarm Mode Killed", text_color="Red")
+    app.radio_button_2.configure(fg_color="Red", text="Manual Mode Killed", text_color="Red")
     app.radio_button_3.configure(fg_color="Red", text="Drone Killed", text_color="Red")
     
 
